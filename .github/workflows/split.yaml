@@ -33,7 +33,7 @@ jobs:
 
       - uses: "symplify/monorepo-split-github-action@v2.3.0"
         env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          GITHUB_TOKEN: ${{ secrets.TOKEN }}
 
         with:
           package_directory: "${{ matrix.package.local_path }}"
