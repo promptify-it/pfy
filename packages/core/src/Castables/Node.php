@@ -22,7 +22,7 @@ class Node implements Cast
     {
         $name = str($name)->studly()->toString();
 
-        return 'PromptifyIt\\PromptifyIt\\Data\\Nodes\\'.$name.'\\'.$name.'NodeData';
+        return 'Pfy\\Core\\Data\\Nodes\\'.$name.'\\'.$name.'NodeData';
     }
 
     private function castNode(array $node): mixed

@@ -14,7 +14,7 @@ class TestCase extends Orchestra
         parent::setUp();
 
         Factory::guessFactoryNamesUsing(
-            fn (string $modelName) => 'PromptifyIt\\PromptifyIt\\Database\\Factories\\'.class_basename($modelName).'Factory'
+            fn (string $modelName) => 'Pfy\\Core\\Database\\Factories\\'.class_basename($modelName).'Factory'
         );
     }
 

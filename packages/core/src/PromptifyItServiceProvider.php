@@ -128,8 +128,8 @@ class PromptifyItServiceProvider extends PackageServiceProvider
             }
 
             $nodes[str($file)->camel()->toString()] = [
-                'nodeData' => 'PromptifyIt\\PromptifyIt\\Data\\Nodes\\'.$file.'\\'.$file.'NodeData',
-                'nodeContentData' => 'PromptifyIt\\PromptifyIt\\Data\\Nodes\\'.$file.'\\'.$file.'NodeContentData',
+                'nodeData' => 'Pfy\\Core\\Data\\Nodes\\'.$file.'\\'.$file.'NodeData',
+                'nodeContentData' => 'Pfy\\Core\\Data\\Nodes\\'.$file.'\\'.$file.'NodeContentData',
             ];
         }
 

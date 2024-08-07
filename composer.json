@@ -84,10 +84,10 @@
     "extra": {
         "laravel": {
             "aliases": {
-                "PromptifyIt": "PromptifyIt\\PromptifyIt\\Facades\\PromptifyIt"
+                "PromptifyIt": "Pfy\\Core\\Facades\\PromptifyIt"
             },
             "providers": [
-                "PromptifyIt\\PromptifyIt\\PromptifyItServiceProvider"
+                "Pfy\\Core\\PromptifyItServiceProvider"
             ]
         }
     },

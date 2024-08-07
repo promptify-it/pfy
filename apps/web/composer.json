@@ -1,6 +1,8 @@
 {
     "name": "promptify-it/web",
     "type": "project",
+    "version": "0.1.3",
+    "homepage": "https://pfy.dedecube.com",
     "description": "The skeleton application for the Laravel framework.",
     "keywords": [
         "promptify",
