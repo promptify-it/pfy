@@ -31,7 +31,8 @@ jobs:
     steps:
       - uses: actions/checkout@v4
 
-      - uses: "symplify/monorepo-split-github-action@v2.3.0"
+      - if: ! startsWith(github.ref, 'refs/tags/')
+        uses: "symplify/monorepo-split-github-action@v2.3.0"
         env:
           GITHUB_TOKEN: ${{ secrets.TOKEN }}
 
@@ -42,3 +43,17 @@ jobs:
 
           user_name: "danieletulone"
           user_email: "danieletulone.work@gmail.com"
+      
+      - if: startsWith(github.ref, 'refs/tags/')
+        uses: "symplify/monorepo-split-github-action@2.1"
+        env:
+          GITHUB_TOKEN: ${{ secrets.TOKEN }}
+        with:
+            tag: ${GITHUB_REF#refs/tags/}
+          
+            package_directory: "${{ matrix.package.local_path }}"
+            repository_organization: "promptify-it"
+            repository_name: "${{ matrix.package.split_repository }}"
+
+            user_name: "danieletulone"
+            user_email: "danieletulone.work@gmail.com"
