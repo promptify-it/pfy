@@ -29,9 +29,9 @@ jobs:
             split_repository: "core"
 
     steps:
-      - uses: actions/checkout@v2
+      - uses: actions/checkout@v4
 
-      - uses: "symplify/monorepo-split-github-action@2.1"
+      - uses: "symplify/monorepo-split-github-action@v2.3.0"
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
