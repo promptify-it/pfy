@@ -1,0 +1,44 @@
+name: Split Test
+
+on:
+  push:
+    branches:
+      - main
+
+    tags:
+      - "*"
+
+  pull_request: null
+
+  release:
+    types: [created]
+
+jobs:
+  split:
+    runs-on: ubuntu-latest
+
+    strategy:
+      fail-fast: false
+      matrix:
+        package:
+          - local_path: "apps/web"
+            split_repository: "web"
+          - local_path: "apps/cli"
+            split_repository: "cli"
+          - local_path: "packages/core"
+            split_repository: "core"
+
+    steps:
+      - uses: actions/checkout@v2
+
+      - uses: "symplify/monorepo-split-github-action@2.1"
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+
+        with:
+          package_directory: "${{ matrix.package.local_path }}"
+          repository_organization: "promptify-it"
+          repository_name: "${{ matrix.package.split_repository }}"
+
+          user_name: "danieletulone"
+          user_email: "danieletulone.work@gmail.com"

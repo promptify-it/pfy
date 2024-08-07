@@ -1,0 +1,17 @@
+version: '3'
+
+services:
+  php-fpm:
+    build:
+      context: .
+      dockerfile: ./docker/services/php/Dockerfile
+    working_dir: /var/www/html
+    restart: always
+    ports:
+      - ${APP_PORT:-8000}:80
+    volumes:
+      - pfy_storage:/var/www/html/storage
+
+volumes:
+  pfy_storage:
+    driver: local
