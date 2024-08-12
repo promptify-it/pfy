@@ -1,12 +1,12 @@
 <script setup lang="ts">
+import ApplicationLogo from '@/Components/ApplicationLogo.vue';
+import TheFooter from '@/Components/TheFooter.vue';
+import { Cursor1 } from '@/misc/cursors/cursor1';
+import { utils } from '@/misc/utils';
 import { Dialog, DialogPanel } from '@headlessui/vue';
 import { Bars3Icon, XMarkIcon } from '@heroicons/vue/24/outline';
 import { Head, Link } from '@inertiajs/vue3';
-import { ref } from 'vue';
-// import Features from './WelcomePartials/Features.vue'
-// import Faqs from './WelcomePartials/Faqs.vue'
-import ApplicationLogo from '@/Components/ApplicationLogo.vue';
-import TheFooter from '@/Components/TheFooter.vue';
+import { onMounted, ref } from 'vue';
 
 const navigation = [
   { name: 'Github', href: '#' },
@@ -14,17 +14,95 @@ const navigation = [
   { name: 'Contact', href: '#' },
 ];
 const mobileMenuOpen = ref(false);
+
+onMounted(() => {
+  new Cursor1(1);
+
+  window.addEventListener('load', async () => {
+    await utils();
+  });
+
+  const cursor = document.querySelector('.tiny-cursor')! as HTMLElement;
+  const cursorCircles = document.querySelectorAll('.tiny-cursor > circle');
+
+  document.querySelectorAll('a').forEach((el) => {
+    el.addEventListener('mouseenter', () => {
+      console.log('hovering');
+      cursor.classList.add('hovering');
+      // cursorCircles[1].setAttribute('filter', 'url(#distort)');
+      cursorCircles.forEach((circle) => {
+        circle.setAttribute('r', '30');
+      });
+    });
+
+    el.addEventListener('mouseleave', () => {
+      cursor.classList.remove('hovering');
+      // cursorCircles[1].setAttribute('filter', 'none');
+      cursorCircles.forEach((circle) => {
+        circle.setAttribute('r', '15');
+      });
+    });
+  });
+});
 </script>
 
 <template>
   <Head title="Welcome" />
 
-  <div
-    class="flex min-h-screen flex-col justify-between bg-white dark:bg-gray-900"
-  >
+  <svg class="h-0 w-0">
+    <defs>
+      <filter id="distort">
+        <feTurbulence baseFrequency=".015" type="fractalNoise" />
+        <feColorMatrix type="hueRotate" values="0">
+          <animate
+            attributeName="values"
+            from="0"
+            to="360"
+            dur="1s"
+            repeatCount="indefinite"
+          />
+        </feColorMatrix>
+        <feDisplacementMap
+          in="SourceGraphic"
+          xChannelSelector="R"
+          yChannelSelector="B"
+          scale="20"
+        >
+          <animate
+            attributeName="scale"
+            values="0;20;50;0"
+            dur="5s"
+            repeatCount="indefinite"
+          />
+        </feDisplacementMap>
+        <feGaussianBlur stdDeviation="3" />
+        <feComponentTransfer result="main">
+          <feFuncA type="gamma" amplitude="50" exponent="5" />
+        </feComponentTransfer>
+        <feColorMatrix
+          type="matrix"
+          values="0 0 0 0 0
+                                       0 0 0 0 0
+                                       0 0 0 0 0
+                                       0 0 0 1 0"
+        />
+        <feGaussianBlur stdDeviation="10" />
+        <feComposite operator="over" in="main" />
+      </filter>
+    </defs>
+  </svg>
+
+  <Teleport to="body">
+    <div
+      id="cursor-container"
+      class="cursor-container pointer-events-none fixed left-0 top-0 -z-10 bg-white dark:bg-neutral-950"
+    ></div>
+  </Teleport>
+
+  <div class="flex min-h-screen flex-col justify-between">
     <header class="inset-x-0 top-0 z-50">
       <nav
-        class="flex items-center justify-between p-6 lg:px-8"
+        class="mx-auto flex max-w-7xl items-center justify-between p-6 lg:px-8"
         aria-label="Global"
       >
         <div class="flex lg:flex-1">
@@ -35,7 +113,7 @@ const mobileMenuOpen = ref(false);
         <div class="flex lg:hidden">
           <button
             type="button"
-            class="-m-2.5 inline-flex items-center justify-center rounded-md p-2.5 text-gray-700 dark:text-white"
+            class="-m-2.5 inline-flex items-center justify-center rounded-md p-2.5 text-neutral-700 dark:text-white"
             @click="mobileMenuOpen = true"
           >
             <span class="sr-only">Open main menu</span>
@@ -47,7 +125,7 @@ const mobileMenuOpen = ref(false);
             v-for="item in navigation"
             :key="item.name"
             :href="item.href"
-            class="text-sm font-semibold leading-6 text-gray-900 hover:text-gray-900 dark:text-white dark:hover:text-white"
+            class="text-sm font-semibold leading-6 text-neutral-900 hover:text-neutral-900 dark:text-white dark:hover:text-white"
             >{{ item.name }}</a
           >
         </div>
@@ -55,7 +133,7 @@ const mobileMenuOpen = ref(false);
           <Link
             v-if="!$page.props.auth?.user?.id"
             :href="route('login')"
-            class="text-sm font-semibold leading-6 text-gray-900 dark:text-white"
+            class="text-sm font-semibold leading-6 text-neutral-900 dark:text-white"
           >
             Log in <span aria-hidden="true">&rarr;</span>
           </Link>
@@ -63,7 +141,7 @@ const mobileMenuOpen = ref(false);
           <Link
             v-else
             :href="route('command.index')"
-            class="text-sm font-semibold leading-6 text-gray-900 dark:text-white"
+            class="text-sm font-semibold leading-6 text-neutral-900 dark:text-neutral-300"
           >
             Dashboard <span aria-hidden="true">&rarr;</span>
           </Link>
@@ -77,16 +155,16 @@ const mobileMenuOpen = ref(false);
       >
         <div class="fixed inset-0 z-50" />
         <DialogPanel
-          class="fixed inset-y-0 right-0 z-50 w-full overflow-y-auto bg-white px-6 py-6 dark:bg-gray-900 dark:ring-gray-900/50 sm:max-w-sm sm:ring-1 sm:ring-gray-900/10"
+          class="fixed inset-y-0 right-0 z-50 w-full overflow-y-auto bg-white px-6 py-6 dark:bg-neutral-950 dark:ring-neutral-900/50 sm:max-w-sm sm:ring-1 sm:ring-neutral-900/10"
         >
           <div class="flex items-center justify-between">
             <a href="#" class="-m-1.5 p-1.5">
-              <span class="sr-only">Your Company</span>
+              <span class="sr-only">Dedecube S.R.L.</span>
               <ApplicationLogo class="h-8 w-8" />
             </a>
             <button
               type="button"
-              class="-m-2.5 rounded-md p-2.5 text-gray-700 dark:text-white"
+              class="-m-2.5 rounded-md p-2.5 text-neutral-700 dark:text-white"
               @click="mobileMenuOpen = false"
             >
               <span class="sr-only">Close menu</span>
@@ -95,21 +173,22 @@ const mobileMenuOpen = ref(false);
           </div>
           <div class="mt-6 flow-root">
             <div
-              class="-my-6 divide-y divide-gray-500/10 dark:divide-gray-500/50"
+              class="-my-6 divide-y divide-neutral-500/10 dark:divide-neutral-500/50"
             >
               <div class="space-y-2 py-6">
                 <a
                   v-for="item in navigation"
                   :key="item.name"
                   :href="item.href"
-                  class="-mx-3 block rounded-lg px-3 py-2 text-base font-semibold leading-7 text-gray-900 hover:bg-gray-50 dark:text-white dark:hover:bg-gray-800"
-                  >{{ item.name }}</a
+                  class="-mx-3 block rounded-lg px-3 py-2 text-base font-semibold leading-7 text-neutral-900 hover:bg-neutral-50 dark:text-white dark:hover:bg-neutral-900"
                 >
+                  {{ item.name }}
+                </a>
               </div>
               <div class="py-6">
                 <Link
                   :href="route('login')"
-                  class="-mx-3 block rounded-lg px-3 py-2.5 text-base font-semibold leading-7 text-gray-900 hover:bg-gray-50 dark:text-white dark:hover:bg-gray-800"
+                  class="-mx-3 block rounded-lg px-3 py-2.5 text-base font-semibold leading-7 text-neutral-900 hover:bg-neutral-50 dark:text-white dark:hover:bg-neutral-900"
                 >
                   Log in
                 </Link>
@@ -123,27 +202,44 @@ const mobileMenuOpen = ref(false);
     <div class="relative isolate flex-1 px-6 pt-14 lg:px-8">
       <div class="mx-auto max-w-3xl py-32 sm:py-48 lg:py-56">
         <div class="text-center">
+          <!-- Beta techy badge -->
+          <div class="mb-8">
+            <span
+              class="inline-flex items-center rounded-full bg-gradient-to-r from-blue-600 to-purple-600 px-3 py-0.5 text-sm font-medium text-white"
+            >
+              Beta
+            </span>
+          </div>
+
           <h1
-            class="text-4xl font-bold tracking-tight text-gray-900 dark:text-white sm:text-6xl"
+            class="text-4xl tracking-tight text-neutral-900 dark:text-white sm:text-6xl"
           >
-            More prompts, less prompt
+            Your Cloud-Powered Cli
           </h1>
 
-          <p class="mt-6 text-lg leading-8 text-gray-600 dark:text-gray-300">
-            Run commands defined by you or community directly into your console
+          <p
+            class="mt-6 text-lg leading-8 text-neutral-600 dark:text-neutral-300"
+          >
+            Create. Execute. Collaborate.
           </p>
 
           <div class="mt-10 flex items-center justify-center gap-x-6">
             <Link
-              :href="
-                $page.props.auth?.user?.id
-                  ? route('command.index')
-                  : route('register')
-              "
-              class="rounded-full bg-blue-600 px-3.5 py-2.5 text-sm font-semibold text-white shadow-sm hover:bg-blue-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-blue-600"
+              :href="route('command.index')"
+              class="border border-blue-600/20 bg-blue-600 bg-opacity-90 px-6 py-4 text-sm text-neutral-100 backdrop-blur-sm hover:bg-blue-600"
             >
-              {{ $page.props.auth?.user?.id ? 'Dashboard' : 'Get Started' }}
+              <span>{{
+                $page.props.auth?.user?.id ? 'Your Commands' : 'Get Started'
+              }}</span>
             </Link>
+
+            <a
+              href="https://github.com/promptify-it/pfy/blob/main/apps/web/README.md"
+              class="border border-neutral-600 bg-opacity-90 px-6 py-4 text-sm text-neutral-100 backdrop-blur-sm hover:bg-neutral-900"
+              target="_blank"
+            >
+              <span>Documentation</span>
+            </a>
           </div>
         </div>
       </div>
