@@ -2,6 +2,8 @@
 
 namespace Pfy\Web\Providers;
 
+use Illuminate\Support\ServiceProvider;
+use Laravel\Jetstream\Jetstream;
 use Pfy\Web\Actions\Jetstream\AddTeamMember;
 use Pfy\Web\Actions\Jetstream\CreateTeam;
 use Pfy\Web\Actions\Jetstream\DeleteTeam;
@@ -9,8 +11,6 @@ use Pfy\Web\Actions\Jetstream\DeleteUser;
 use Pfy\Web\Actions\Jetstream\InviteTeamMember;
 use Pfy\Web\Actions\Jetstream\RemoveTeamMember;
 use Pfy\Web\Actions\Jetstream\UpdateTeamName;
-use Illuminate\Support\ServiceProvider;
-use Laravel\Jetstream\Jetstream;
 
 class JetstreamServiceProvider extends ServiceProvider
 {
@@ -36,6 +36,10 @@ class JetstreamServiceProvider extends ServiceProvider
         Jetstream::removeTeamMembersUsing(RemoveTeamMember::class);
         Jetstream::deleteTeamsUsing(DeleteTeam::class);
         Jetstream::deleteUsersUsing(DeleteUser::class);
+        Jetstream::useTeamModel(\Pfy\Web\Models\Team::class);
+        Jetstream::useUserModel(\Pfy\Web\Models\User::class);
+        Jetstream::useMembershipModel(\Pfy\Web\Models\Membership::class);
+        Jetstream::useTeamInvitationModel(\Pfy\Web\Models\TeamInvitation::class);
     }
 
     /**
