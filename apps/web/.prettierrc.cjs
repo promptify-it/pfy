@@ -1,9 +1,9 @@
-{
+module.exports = {
     "tabWidth": 2,
     "useTabs": false,
     "semi": true,
     "singleQuote": true,
     "plugins": [
-        "prettier-plugin-tailwindcss"
+        require.resolve("prettier-plugin-tailwindcss")
     ]
 }
