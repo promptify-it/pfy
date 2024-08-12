@@ -318,11 +318,11 @@ onMounted(async () => {
 .monaco-editor .margin,
 .sticky-widget,
 .monaco-editor-background {
-  @apply dark:!bg-gray-900;
+  @apply dark:!bg-neutral-900;
   /* --vscode-editor-background: rgb(17 24 39 / var(--tw-bg-opacity)) !important; */
 }
 
 #root {
-  @apply rounded-sm !border dark:border-gray-800;
+  @apply rounded-sm !border dark:border-neutral-800;
 }
 </style>

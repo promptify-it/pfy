@@ -60,7 +60,7 @@ const closeModal = () => {
     </template>
 
     <template #content>
-      <div class="max-w-xl text-sm text-gray-600 dark:text-gray-400">
+      <div class="max-w-xl text-sm text-neutral-600 dark:text-neutral-400">
         If necessary, you may log out of all of your other browser sessions
         across all of your devices. Some of your recent sessions are listed
         below; however, this list may not be exhaustive. If you feel your
@@ -77,7 +77,7 @@ const closeModal = () => {
           <div>
             <svg
               v-if="session.agent.is_desktop"
-              class="h-8 w-8 text-gray-500"
+              class="h-8 w-8 text-neutral-500"
               xmlns="http://www.w3.org/2000/svg"
               fill="none"
               viewBox="0 0 24 24"
@@ -93,7 +93,7 @@ const closeModal = () => {
 
             <svg
               v-else
-              class="h-8 w-8 text-gray-500"
+              class="h-8 w-8 text-neutral-500"
               xmlns="http://www.w3.org/2000/svg"
               fill="none"
               viewBox="0 0 24 24"
@@ -109,13 +109,13 @@ const closeModal = () => {
           </div>
 
           <div class="ms-3">
-            <div class="text-sm text-gray-600 dark:text-gray-400">
+            <div class="text-sm text-neutral-600 dark:text-neutral-400">
               {{ session.agent.platform ? session.agent.platform : 'Unknown' }}
               - {{ session.agent.browser ? session.agent.browser : 'Unknown' }}
             </div>
 
             <div>
-              <div class="text-xs text-gray-500">
+              <div class="text-xs text-neutral-500">
                 {{ session.ip_address }},
 
                 <span

@@ -30,7 +30,7 @@ const close = () => {
     :closeable="closeable"
     @close="close"
   >
-    <div class="bg-white px-4 pb-4 pt-5 dark:bg-gray-800 sm:p-6 sm:pb-4">
+    <div class="bg-white px-4 pb-4 pt-5 dark:bg-neutral-900 sm:p-6 sm:pb-4">
       <div class="sm:flex sm:items-start">
         <div
           class="mx-auto flex h-12 w-12 shrink-0 items-center justify-center rounded-full bg-red-100 sm:mx-0 sm:h-10 sm:w-10"
@@ -52,11 +52,11 @@ const close = () => {
         </div>
 
         <div class="mt-3 text-center sm:ms-4 sm:mt-0 sm:text-start">
-          <h3 class="text-lg font-medium text-gray-900 dark:text-gray-100">
+          <h3 class="text-lg font-medium text-neutral-900 dark:text-neutral-100">
             <slot name="title" />
           </h3>
 
-          <div class="mt-4 text-sm text-gray-600 dark:text-gray-400">
+          <div class="mt-4 text-sm text-neutral-600 dark:text-neutral-400">
             <slot name="content" />
           </div>
         </div>
@@ -64,7 +64,7 @@ const close = () => {
     </div>
 
     <div
-      class="flex flex-row justify-end bg-gray-100 px-6 py-4 text-end dark:bg-gray-800"
+      class="flex flex-row justify-end bg-neutral-100 px-6 py-4 text-end dark:bg-neutral-900"
     >
       <slot name="footer" />
     </div>

@@ -1,6 +1,6 @@
 <script setup lang="ts">
-import AuthenticationCard from '@/Components/AuthenticationCard.vue';
 import ApplicationLogo from '@/Components/ApplicationLogo.vue';
+import AuthenticationCard from '@/Components/AuthenticationCard.vue';
 import Checkbox from '@/Components/Checkbox.vue';
 import InputError from '@/Components/InputError.vue';
 import InputLabel from '@/Components/InputLabel.vue';
@@ -83,7 +83,7 @@ const submit = () => {
       <div class="mt-4 block">
         <label class="flex items-center">
           <Checkbox v-model:checked="form.remember" name="remember" />
-          <span class="ms-2 text-sm text-gray-600 dark:text-gray-400"
+          <span class="ms-2 text-sm text-neutral-600 dark:text-neutral-400"
             >Remember me</span
           >
         </label>
@@ -93,7 +93,7 @@ const submit = () => {
         <Link
           v-if="canResetPassword"
           :href="route('password.request')"
-          class="rounded-md text-sm text-gray-600 underline hover:text-gray-900 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2 dark:text-gray-400 dark:hover:text-gray-100 dark:focus:ring-offset-gray-800"
+          class="rounded-md text-sm text-neutral-600 underline hover:text-neutral-900 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2 dark:text-neutral-400 dark:hover:text-neutral-100 dark:focus:ring-offset-neutral-800"
         >
           Forgot your password?
         </Link>

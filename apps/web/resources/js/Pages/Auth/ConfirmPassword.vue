@@ -33,7 +33,7 @@ const submit = () => {
       <ApplicationLogo class="h-16 w-16" />
     </template>
 
-    <div class="mb-4 text-sm text-gray-600 dark:text-gray-400">
+    <div class="mb-4 text-sm text-neutral-600 dark:text-neutral-400">
       This is a secure area of the application. Please confirm your password
       before continuing.
     </div>

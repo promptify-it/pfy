@@ -44,9 +44,9 @@ const logout = () => {
 
     <Banner />
 
-    <div class="min-h-screen bg-gray-100 dark:bg-gray-900">
+    <div class="min-h-screen bg-neutral-100 dark:bg-neutral-950">
       <nav
-        class="border-b border-gray-100 bg-white dark:border-gray-700 dark:bg-gray-800"
+        class="border-b border-neutral-100 bg-white dark:border-neutral-800 dark:bg-neutral-950"
       >
         <!-- Primary Navigation Menu -->
         <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
@@ -67,13 +67,6 @@ const logout = () => {
                 >
                   Commands
                 </NavLink>
-
-                <NavLink
-                  :href="route('docs.index')"
-                  :active="route().current('docs.index')"
-                >
-                  Docs
-                </NavLink>
               </div>
             </div>
 
@@ -89,7 +82,7 @@ const logout = () => {
                     <span class="inline-flex rounded-md">
                       <button
                         type="button"
-                        class="inline-flex items-center rounded-md border border-transparent bg-white px-3 py-2 text-sm font-medium leading-4 text-gray-500 transition duration-150 ease-in-out hover:text-gray-700 focus:bg-gray-50 focus:outline-none active:bg-gray-50 dark:bg-gray-800 dark:text-gray-400 dark:hover:text-gray-300 dark:focus:bg-gray-700 dark:active:bg-gray-700"
+                        class="inline-flex items-center rounded-md border border-transparent bg-white px-3 py-2 text-sm font-medium leading-4 text-neutral-500 transition duration-150 ease-in-out hover:text-neutral-700 focus:bg-neutral-50 focus:outline-none active:bg-neutral-50 dark:bg-neutral-900 dark:text-neutral-400 dark:hover:text-neutral-300 dark:focus:bg-neutral-700 dark:active:bg-neutral-700"
                       >
                         {{ $page.props.auth.user.current_team.name }}
 
@@ -114,7 +107,7 @@ const logout = () => {
                   <template #content>
                     <div class="w-60">
                       <!-- Team Management -->
-                      <div class="block px-4 py-2 text-xs text-gray-400">
+                      <div class="block px-4 py-2 text-xs text-neutral-400">
                         Manage Team
                       </div>
 
@@ -142,10 +135,10 @@ const logout = () => {
                         v-if="$page.props.auth.user.all_teams.length > 1"
                       >
                         <div
-                          class="border-t border-gray-200 dark:border-gray-600"
+                          class="border-t border-neutral-200 dark:border-neutral-600"
                         />
 
-                        <div class="block px-4 py-2 text-xs text-gray-400">
+                        <div class="block px-4 py-2 text-xs text-neutral-400">
                           Switch Teams
                         </div>
 
@@ -192,7 +185,7 @@ const logout = () => {
                   <template #trigger>
                     <button
                       v-if="$page.props.jetstream.managesProfilePhotos"
-                      class="flex rounded-full border-2 border-transparent text-sm transition focus:border-gray-300 focus:outline-none"
+                      class="flex rounded-full border-2 border-transparent text-sm transition focus:border-neutral-300 focus:outline-none"
                     >
                       <img
                         class="h-8 w-8 rounded-full object-cover"
@@ -204,7 +197,7 @@ const logout = () => {
                     <span v-else class="inline-flex rounded-md">
                       <button
                         type="button"
-                        class="inline-flex items-center rounded-md border border-transparent bg-white px-3 py-2 text-sm font-medium leading-4 text-gray-500 transition duration-150 ease-in-out hover:text-gray-700 focus:bg-gray-50 focus:outline-none active:bg-gray-50 dark:bg-gray-800 dark:text-gray-400 dark:hover:text-gray-300 dark:focus:bg-gray-700 dark:active:bg-gray-700"
+                        class="inline-flex items-center rounded-md border border-transparent bg-white px-3 py-2 text-sm font-medium leading-4 text-neutral-500 transition duration-150 ease-in-out hover:text-neutral-700 focus:bg-neutral-50 focus:outline-none active:bg-neutral-50 dark:bg-neutral-900 dark:text-neutral-400 dark:hover:text-neutral-300 dark:focus:bg-neutral-700 dark:active:bg-neutral-700"
                       >
                         {{ $page.props.auth.user.name }}
 
@@ -228,7 +221,7 @@ const logout = () => {
 
                   <template #content>
                     <!-- Account Management -->
-                    <div class="block px-4 py-2 text-xs text-gray-400">
+                    <div class="block px-4 py-2 text-xs text-neutral-400">
                       Manage Account
                     </div>
 
@@ -248,7 +241,7 @@ const logout = () => {
                     </DropdownLink>
 
                     <div
-                      class="border-t border-gray-200 dark:border-gray-600"
+                      class="border-t border-neutral-200 dark:border-neutral-600"
                     />
 
                     <!-- Authentication -->
@@ -263,7 +256,7 @@ const logout = () => {
             <!-- Hamburger -->
             <div class="-me-2 flex items-center sm:hidden">
               <button
-                class="inline-flex items-center justify-center rounded-md p-2 text-gray-400 transition duration-150 ease-in-out hover:bg-gray-100 hover:text-gray-500 focus:bg-gray-100 focus:text-gray-500 focus:outline-none dark:text-gray-500 dark:hover:bg-gray-900 dark:hover:text-gray-400 dark:focus:bg-gray-900 dark:focus:text-gray-400"
+                class="inline-flex items-center justify-center rounded-md p-2 text-neutral-400 transition duration-150 ease-in-out hover:bg-neutral-100 hover:text-neutral-500 focus:bg-neutral-100 focus:text-neutral-500 focus:outline-none dark:text-neutral-500 dark:hover:bg-neutral-900 dark:hover:text-neutral-400 dark:focus:bg-neutral-900 dark:focus:text-neutral-400"
                 @click="showingNavigationDropdown = !showingNavigationDropdown"
               >
                 <svg
@@ -316,7 +309,9 @@ const logout = () => {
           </div>
 
           <!-- Responsive Settings Options -->
-          <div class="border-t border-gray-200 pb-1 pt-4 dark:border-gray-600">
+          <div
+            class="border-t border-neutral-200 pb-1 pt-4 dark:border-neutral-600"
+          >
             <div class="flex items-center px-4">
               <div
                 v-if="$page.props.jetstream.managesProfilePhotos"
@@ -331,11 +326,11 @@ const logout = () => {
 
               <div>
                 <div
-                  class="text-base font-medium text-gray-800 dark:text-gray-200"
+                  class="text-base font-medium text-neutral-800 dark:text-neutral-200"
                 >
                   {{ $page.props.auth.user.name }}
                 </div>
-                <div class="text-sm font-medium text-gray-500">
+                <div class="text-sm font-medium text-neutral-500">
                   {{ $page.props.auth.user.email }}
                 </div>
               </div>
@@ -364,9 +359,11 @@ const logout = () => {
 
               <!-- Team Management -->
               <template v-if="$page.props.jetstream.hasTeamFeatures">
-                <div class="border-t border-gray-200 dark:border-gray-600" />
+                <div
+                  class="border-t border-neutral-200 dark:border-neutral-600"
+                />
 
-                <div class="block px-4 py-2 text-xs text-gray-400">
+                <div class="block px-4 py-2 text-xs text-neutral-400">
                   Manage Team
                 </div>
 
@@ -390,9 +387,11 @@ const logout = () => {
 
                 <!-- Team Switcher -->
                 <template v-if="$page.props.auth.user.all_teams.length > 1">
-                  <div class="border-t border-gray-200 dark:border-gray-600" />
+                  <div
+                    class="border-t border-neutral-200 dark:border-neutral-600"
+                  />
 
-                  <div class="block px-4 py-2 text-xs text-gray-400">
+                  <div class="block px-4 py-2 text-xs text-neutral-400">
                     Switch Teams
                   </div>
 
@@ -433,7 +432,7 @@ const logout = () => {
       </nav>
 
       <!-- Page Heading -->
-      <header v-if="$slots.header" class="bg-white shadow dark:bg-gray-800">
+      <header v-if="$slots.header" class="bg-white shadow dark:bg-neutral-950">
         <div class="mx-auto max-w-7xl px-4 py-6 sm:px-6 lg:px-8">
           <slot name="header" />
         </div>
