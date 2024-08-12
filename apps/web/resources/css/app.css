@@ -6,6 +6,23 @@
     display: none;
 }
 
-html {
-    @apply bg-white dark:bg-gray-900;
+
+.cursor-container{
+width: 100vw;
+height: calc(var(--vh, 1vh) * 100);
+}
+
+.cursor-container g {
+    transform-origin: center center;
+}
+
+:root{
+  --dark: #181825;
+  --white: #ffffff;
+  --primary: #181825;
+  --secondary: #1d7fff;
+}
+
+.tiny-cursor circle {
+  @apply fill-white/5 duration-200 ease-in-out opacity-0;
 }
