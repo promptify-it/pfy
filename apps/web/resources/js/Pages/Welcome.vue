@@ -8,11 +8,18 @@ import { Bars3Icon, XMarkIcon } from '@heroicons/vue/24/outline';
 import { Head, Link } from '@inertiajs/vue3';
 import { onMounted, ref } from 'vue';
 
+const docsLink =
+  'https://github.com/promptify-it/pfy/blob/main/apps/web/README.md';
+
 const navigation = [
-  { name: 'Github', href: '#' },
-  { name: 'Docs', href: '#' },
-  { name: 'Contact', href: '#' },
+  { name: 'Github', href: 'https://github.com/promptify-it/pfy' },
+  {
+    name: 'Docs',
+    href: docsLink,
+  },
+  { name: 'Contact', href: 'mailto:daniele@dedecube.com' },
 ];
+
 const mobileMenuOpen = ref(false);
 
 onMounted(() => {
@@ -106,9 +113,15 @@ onMounted(() => {
         aria-label="Global"
       >
         <div class="flex lg:flex-1">
-          <a href="#" class="-m-1.5 p-1.5">
+          <Link href="#" class="-m-1.5 flex items-center gap-x-4 p-1.5">
             <ApplicationLogo class="h-8 w-8" />
-          </a>
+
+            <span
+              class="inline-block bg-gradient-to-r from-blue-600 to-gray-400 bg-clip-text text-xl uppercase tracking-wider text-transparent"
+            >
+              Promptify
+            </span>
+          </Link>
         </div>
         <div class="flex lg:hidden">
           <button
@@ -125,7 +138,7 @@ onMounted(() => {
             v-for="item in navigation"
             :key="item.name"
             :href="item.href"
-            class="text-sm font-semibold leading-6 text-neutral-900 hover:text-neutral-900 dark:text-white dark:hover:text-white"
+            class="text-sm leading-6 text-neutral-900 hover:text-neutral-900 dark:text-neutral-300 dark:hover:text-white"
             >{{ item.name }}</a
           >
         </div>
@@ -141,9 +154,10 @@ onMounted(() => {
           <Link
             v-else
             :href="route('command.index')"
-            class="text-sm font-semibold leading-6 text-neutral-900 dark:text-neutral-300"
+            class="group text-sm leading-6 text-neutral-900 dark:text-neutral-300 dark:hover:text-white"
           >
-            Dashboard <span aria-hidden="true">&rarr;</span>
+            Your Commands
+            <span aria-hidden="true">&rarr;</span>
           </Link>
         </div>
       </nav>
@@ -234,7 +248,7 @@ onMounted(() => {
             </Link>
 
             <a
-              href="https://github.com/promptify-it/pfy/blob/main/apps/web/README.md"
+              :href="docsLink"
               class="border border-neutral-600 bg-opacity-90 px-6 py-4 text-sm text-neutral-100 backdrop-blur-sm hover:bg-neutral-900"
               target="_blank"
             >

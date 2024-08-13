@@ -54,8 +54,17 @@ const logout = () => {
             <div class="flex">
               <!-- Logo -->
               <div class="flex shrink-0 items-center">
-                <Link :href="route('command.index')">
+                <Link
+                  :href="route('welcome')"
+                  class="flex items-center gap-x-4"
+                >
                   <ApplicationLogo class="block h-9 w-auto" />
+
+                  <span
+                    class="inline-block bg-gradient-to-r from-blue-600 to-gray-400 bg-clip-text text-xl uppercase tracking-wider text-transparent"
+                  >
+                    Promptify
+                  </span>
                 </Link>
               </div>
 

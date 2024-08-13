@@ -6,7 +6,7 @@ use Pfy\Web\Http\Controllers\Inertia\CommandController;
 
 Route::get('/', function () {
     return Inertia::render('Welcome');
-});
+})->name('welcome');
 
 Route::get('privacy-policy', function () {
     return Inertia::render('PrivacyPolicy');
