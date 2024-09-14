@@ -27,7 +27,7 @@ watchEffect(async () => {
         <div class="flex flex-wrap items-center justify-between">
           <div class="flex w-0 min-w-0 flex-1 items-center">
             <span
-              class="flex rounded-lg p-2"
+              class="flex p-2"
               :class="{
                 'bg-blue-600': style == 'success',
                 'bg-red-600': style == 'danger',
@@ -74,7 +74,7 @@ watchEffect(async () => {
           <div class="shrink-0 sm:ms-3">
             <button
               type="button"
-              class="-me-1 flex rounded-md p-2 transition focus:outline-none sm:-me-2"
+              class="-me-1 flex p-2 transition focus:outline-none sm:-me-2"
               :class="{
                 'hover:bg-blue-600 focus:bg-blue-600': style == 'success',
                 'hover:bg-red-600 focus:bg-red-600': style == 'danger',

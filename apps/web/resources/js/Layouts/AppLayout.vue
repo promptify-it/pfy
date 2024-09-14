@@ -44,10 +44,8 @@ const logout = () => {
 
     <Banner />
 
-    <div class="min-h-screen bg-neutral-100 dark:bg-neutral-950">
-      <nav
-        class="border-b border-neutral-100 bg-white dark:border-neutral-800 dark:bg-neutral-950"
-      >
+    <div class="min-h-screen">
+      <nav class="border-b border-neutral-200 dark:border-neutral-900">
         <!-- Primary Navigation Menu -->
         <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
           <div class="flex h-16 justify-between">
@@ -58,10 +56,10 @@ const logout = () => {
                   :href="route('welcome')"
                   class="flex items-center gap-x-4"
                 >
-                  <ApplicationLogo class="block h-9 w-auto" />
+                  <ApplicationLogo class="block h-6 w-auto" />
 
                   <span
-                    class="inline-block bg-gradient-to-r from-blue-600 to-gray-400 bg-clip-text text-xl uppercase tracking-wider text-transparent"
+                    class="inline-block bg-gradient-to-r from-blue-500 to-blue-700 bg-clip-text text-xl uppercase tracking-wider text-transparent"
                   >
                     Promptify
                   </span>
@@ -77,6 +75,15 @@ const logout = () => {
                   Commands
                 </NavLink>
               </div>
+
+              <div class="hidden space-x-8 sm:-my-px sm:ms-10 sm:flex">
+                <NavLink
+                  :href="route('command.index')"
+                  :active="route().current('marketplace.index')"
+                >
+                  Marketplace
+                </NavLink>
+              </div>
             </div>
 
             <div class="hidden sm:ms-6 sm:flex sm:items-center">
@@ -88,10 +95,10 @@ const logout = () => {
                   width="60"
                 >
                   <template #trigger>
-                    <span class="inline-flex rounded-md">
+                    <span class="inline-flex">
                       <button
                         type="button"
-                        class="inline-flex items-center rounded-md border border-transparent bg-white px-3 py-2 text-sm font-medium leading-4 text-neutral-500 transition duration-150 ease-in-out hover:text-neutral-700 focus:bg-neutral-50 focus:outline-none active:bg-neutral-50 dark:bg-neutral-900 dark:text-neutral-400 dark:hover:text-neutral-300 dark:focus:bg-neutral-700 dark:active:bg-neutral-700"
+                        class="inline-flex items-center border border-transparent bg-white px-3 py-2 text-sm font-medium leading-4 text-neutral-500 transition duration-150 ease-in-out hover:text-neutral-700 focus:bg-neutral-50 focus:outline-none active:bg-neutral-50 dark:bg-neutral-900 dark:text-neutral-400 dark:hover:text-neutral-300 dark:focus:bg-neutral-700 dark:active:bg-neutral-700"
                       >
                         {{ $page.props.auth.user.current_team.name }}
 
@@ -194,19 +201,19 @@ const logout = () => {
                   <template #trigger>
                     <button
                       v-if="$page.props.jetstream.managesProfilePhotos"
-                      class="flex rounded-full border-2 border-transparent text-sm transition focus:border-neutral-300 focus:outline-none"
+                      class="flex border-2 border-transparent text-sm transition focus:border-neutral-300 focus:outline-none"
                     >
                       <img
-                        class="h-8 w-8 rounded-full object-cover"
+                        class="h-8 w-8 object-cover"
                         :src="$page.props.auth.user.profile_photo_url"
                         :alt="$page.props.auth.user.name"
                       />
                     </button>
 
-                    <span v-else class="inline-flex rounded-md">
+                    <span v-else class="inline-flex">
                       <button
                         type="button"
-                        class="inline-flex items-center rounded-md border border-transparent bg-white px-3 py-2 text-sm font-medium leading-4 text-neutral-500 transition duration-150 ease-in-out hover:text-neutral-700 focus:bg-neutral-50 focus:outline-none active:bg-neutral-50 dark:bg-neutral-900 dark:text-neutral-400 dark:hover:text-neutral-300 dark:focus:bg-neutral-700 dark:active:bg-neutral-700"
+                        class="inline-flex items-center border border-transparent bg-white px-3 py-2 text-sm font-medium leading-4 text-neutral-500 transition duration-150 ease-in-out hover:text-neutral-700 focus:bg-neutral-50 focus:outline-none active:bg-neutral-50 dark:bg-neutral-900 dark:text-neutral-400 dark:hover:text-neutral-300 dark:focus:bg-neutral-700 dark:active:bg-neutral-700"
                       >
                         {{ $page.props.auth.user.name }}
 
@@ -250,7 +257,7 @@ const logout = () => {
                     </DropdownLink>
 
                     <div
-                      class="border-t border-neutral-200 dark:border-neutral-600"
+                      class="border-t border-neutral-200 dark:border-neutral-800"
                     />
 
                     <!-- Authentication -->
@@ -265,7 +272,7 @@ const logout = () => {
             <!-- Hamburger -->
             <div class="-me-2 flex items-center sm:hidden">
               <button
-                class="inline-flex items-center justify-center rounded-md p-2 text-neutral-400 transition duration-150 ease-in-out hover:bg-neutral-100 hover:text-neutral-500 focus:bg-neutral-100 focus:text-neutral-500 focus:outline-none dark:text-neutral-500 dark:hover:bg-neutral-900 dark:hover:text-neutral-400 dark:focus:bg-neutral-900 dark:focus:text-neutral-400"
+                class="inline-flex items-center justify-center p-2 text-neutral-400 transition duration-150 ease-in-out hover:bg-neutral-100 hover:text-neutral-500 focus:bg-neutral-100 focus:text-neutral-500 focus:outline-none dark:text-neutral-500 dark:hover:bg-neutral-900 dark:hover:text-neutral-400 dark:focus:bg-neutral-900 dark:focus:text-neutral-400"
                 @click="showingNavigationDropdown = !showingNavigationDropdown"
               >
                 <svg
@@ -327,7 +334,7 @@ const logout = () => {
                 class="me-3 shrink-0"
               >
                 <img
-                  class="h-10 w-10 rounded-full object-cover"
+                  class="w-10ll h-10 object-cover"
                   :src="$page.props.auth.user.profile_photo_url"
                   :alt="$page.props.auth.user.name"
                 />
@@ -441,7 +448,10 @@ const logout = () => {
       </nav>
 
       <!-- Page Heading -->
-      <header v-if="$slots.header" class="bg-white shadow dark:bg-neutral-950">
+      <header
+        v-if="$slots.header"
+        class="border-b border-neutral-200 bg-white dark:border-neutral-900 dark:bg-neutral-950"
+      >
         <div class="mx-auto max-w-7xl px-4 py-6 sm:px-6 lg:px-8">
           <slot name="header" />
         </div>

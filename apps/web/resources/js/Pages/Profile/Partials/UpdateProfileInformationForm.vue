@@ -111,14 +111,14 @@ const clearPhotoFileInput = () => {
           <img
             :src="user.profile_photo_url"
             :alt="user.name"
-            class="h-20 w-20 rounded-full object-cover"
+            class="h-20 w-20 object-cover"
           />
         </div>
 
         <!-- New Profile Photo Preview -->
         <div v-show="photoPreview" class="mt-2">
           <span
-            class="block h-20 w-20 rounded-full bg-cover bg-center bg-no-repeat"
+            class="block h-20 w-20 bg-cover bg-center bg-no-repeat"
             :style="'background-image: url(\'' + photoPreview + '\');'"
           />
         </div>
@@ -182,7 +182,7 @@ const clearPhotoFileInput = () => {
               :href="route('verification.send')"
               method="post"
               as="button"
-              class="rounded-md text-sm text-neutral-600 underline hover:text-neutral-900 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2 dark:text-neutral-400 dark:hover:text-neutral-100 dark:focus:ring-offset-neutral-800"
+              class="text-sm text-neutral-600 underline hover:text-neutral-900 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2 dark:text-neutral-400 dark:hover:text-neutral-100 dark:focus:ring-offset-neutral-800"
               @click.prevent="sendEmailVerification"
             >
               Click here to re-send the verification email.

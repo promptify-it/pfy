@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import ApplicationLogo from '@/Components/ApplicationLogo.vue';
 import TheFooter from '@/Components/TheFooter.vue';
-import { Cursor1 } from '@/misc/cursors/cursor1';
+import { Cursor } from '@/misc/cursors/cursor1';
 import { utils } from '@/misc/utils';
 import { Dialog, DialogPanel } from '@headlessui/vue';
 import { Bars3Icon, XMarkIcon } from '@heroicons/vue/24/outline';
@@ -17,13 +17,13 @@ const navigation = [
     name: 'Docs',
     href: docsLink,
   },
-  { name: 'Contact', href: 'mailto:daniele@dedecube.com' },
+  { name: 'Marketplace', href: route('marketplace') },
 ];
 
 const mobileMenuOpen = ref(false);
 
 onMounted(() => {
-  new Cursor1(1);
+  new Cursor();
 
   window.addEventListener('load', async () => {
     await utils();
@@ -56,57 +56,14 @@ onMounted(() => {
 <template>
   <Head title="Welcome" />
 
-  <svg class="h-0 w-0">
-    <defs>
-      <filter id="distort">
-        <feTurbulence baseFrequency=".015" type="fractalNoise" />
-        <feColorMatrix type="hueRotate" values="0">
-          <animate
-            attributeName="values"
-            from="0"
-            to="360"
-            dur="1s"
-            repeatCount="indefinite"
-          />
-        </feColorMatrix>
-        <feDisplacementMap
-          in="SourceGraphic"
-          xChannelSelector="R"
-          yChannelSelector="B"
-          scale="20"
-        >
-          <animate
-            attributeName="scale"
-            values="0;20;50;0"
-            dur="5s"
-            repeatCount="indefinite"
-          />
-        </feDisplacementMap>
-        <feGaussianBlur stdDeviation="3" />
-        <feComponentTransfer result="main">
-          <feFuncA type="gamma" amplitude="50" exponent="5" />
-        </feComponentTransfer>
-        <feColorMatrix
-          type="matrix"
-          values="0 0 0 0 0
-                                       0 0 0 0 0
-                                       0 0 0 0 0
-                                       0 0 0 1 0"
-        />
-        <feGaussianBlur stdDeviation="10" />
-        <feComposite operator="over" in="main" />
-      </filter>
-    </defs>
-  </svg>
-
   <Teleport to="body">
     <div
       id="cursor-container"
-      class="cursor-container pointer-events-none fixed left-0 top-0 -z-10 bg-white dark:bg-neutral-950"
+      class="cursor-container pointer-events-none fixed left-0 top-0 z-0"
     ></div>
   </Teleport>
 
-  <div class="flex min-h-screen flex-col justify-between">
+  <div class="home flex min-h-screen flex-col justify-between">
     <header class="inset-x-0 top-0 z-50">
       <nav
         class="mx-auto flex max-w-7xl items-center justify-between p-6 lg:px-8"
@@ -114,10 +71,10 @@ onMounted(() => {
       >
         <div class="flex lg:flex-1">
           <Link href="#" class="-m-1.5 flex items-center gap-x-4 p-1.5">
-            <ApplicationLogo class="h-8 w-8" />
+            <ApplicationLogo class="h-6 w-6" />
 
             <span
-              class="inline-block bg-gradient-to-r from-blue-600 to-gray-400 bg-clip-text text-xl uppercase tracking-wider text-transparent"
+              class="inline-block bg-gradient-to-r from-blue-500 to-blue-700 bg-clip-text text-xl uppercase tracking-wider text-transparent"
             >
               Promptify
             </span>
@@ -126,7 +83,7 @@ onMounted(() => {
         <div class="flex lg:hidden">
           <button
             type="button"
-            class="-m-2.5 inline-flex items-center justify-center rounded-md p-2.5 text-neutral-700 dark:text-white"
+            class="-m-2.5 inline-flex items-center justify-center p-2.5 text-neutral-700 dark:text-white"
             @click="mobileMenuOpen = true"
           >
             <span class="sr-only">Open main menu</span>
@@ -146,7 +103,7 @@ onMounted(() => {
           <Link
             v-if="!$page.props.auth?.user?.id"
             :href="route('login')"
-            class="text-sm font-semibold leading-6 text-neutral-900 dark:text-white"
+            class="text-sm leading-6 text-neutral-900 dark:text-white"
           >
             Log in <span aria-hidden="true">&rarr;</span>
           </Link>
@@ -178,7 +135,7 @@ onMounted(() => {
             </a>
             <button
               type="button"
-              class="-m-2.5 rounded-md p-2.5 text-neutral-700 dark:text-white"
+              class="-m-2.5 p-2.5 text-neutral-700 dark:text-white"
               @click="mobileMenuOpen = false"
             >
               <span class="sr-only">Close menu</span>
@@ -194,7 +151,7 @@ onMounted(() => {
                   v-for="item in navigation"
                   :key="item.name"
                   :href="item.href"
-                  class="-mx-3 block rounded-lg px-3 py-2 text-base font-semibold leading-7 text-neutral-900 hover:bg-neutral-50 dark:text-white dark:hover:bg-neutral-900"
+                  class="-mx-3 block px-3 py-2 text-base leading-7 text-neutral-900 hover:bg-neutral-50 dark:text-white dark:hover:bg-neutral-900"
                 >
                   {{ item.name }}
                 </a>
@@ -202,7 +159,7 @@ onMounted(() => {
               <div class="py-6">
                 <Link
                   :href="route('login')"
-                  class="-mx-3 block rounded-lg px-3 py-2.5 text-base font-semibold leading-7 text-neutral-900 hover:bg-neutral-50 dark:text-white dark:hover:bg-neutral-900"
+                  class="-mx-3 block px-3 py-2.5 text-base leading-7 text-neutral-900 hover:bg-neutral-50 dark:text-white dark:hover:bg-neutral-900"
                 >
                   Log in
                 </Link>
@@ -216,25 +173,16 @@ onMounted(() => {
     <div class="relative isolate flex-1 px-6 pt-14 lg:px-8">
       <div class="mx-auto max-w-3xl py-32 sm:py-48 lg:py-56">
         <div class="text-center">
-          <!-- Beta techy badge -->
-          <div class="mb-8">
-            <span
-              class="inline-flex items-center rounded-full bg-gradient-to-r from-blue-600 to-purple-600 px-3 py-0.5 text-sm font-medium text-white"
-            >
-              Beta
-            </span>
-          </div>
-
           <h1
             class="text-4xl tracking-tight text-neutral-900 dark:text-white sm:text-6xl"
           >
-            Your Cloud-Powered Cli
+            Enhance your cli experience
           </h1>
 
           <p
             class="mt-6 text-lg leading-8 text-neutral-600 dark:text-neutral-300"
           >
-            Create. Execute. Collaborate.
+            No more args or options, just ui in your terminal.
           </p>
 
           <div class="mt-10 flex items-center justify-center gap-x-6">
@@ -246,14 +194,6 @@ onMounted(() => {
                 $page.props.auth?.user?.id ? 'Your Commands' : 'Get Started'
               }}</span>
             </Link>
-
-            <a
-              :href="docsLink"
-              class="border border-neutral-600 bg-opacity-90 px-6 py-4 text-sm text-neutral-100 backdrop-blur-sm hover:bg-neutral-900"
-              target="_blank"
-            >
-              <span>Documentation</span>
-            </a>
           </div>
         </div>
       </div>
@@ -262,3 +202,22 @@ onMounted(() => {
     <TheFooter />
   </div>
 </template>
+
+<style>
+.cursor-container {
+  --dark: #181825;
+  --white: #ffffff;
+  --primary: #181825d1;
+  --secondary: #1d7fffc6;
+  width: 100vw;
+  height: calc(var(--vh, 1vh) * 100);
+}
+
+.cursor-container g {
+  transform-origin: center center;
+}
+
+.tiny-cursor circle {
+  @apply fill-white/5 opacity-0 duration-200 ease-in-out;
+}
+</style>

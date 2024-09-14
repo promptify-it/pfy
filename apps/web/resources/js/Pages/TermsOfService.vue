@@ -14,7 +14,7 @@ import { Head } from '@inertiajs/vue3';
         </div>
 
         <div
-          class="prose mt-6 w-full overflow-hidden bg-white p-6 shadow-md dark:prose-invert dark:bg-neutral-900 sm:max-w-2xl sm:rounded-lg"
+          class="prose mt-6 w-full overflow-hidden bg-white p-6  dark:prose-invert dark:bg-neutral-900 sm:max-w-2xl "
         >
           <h1>Terms of Service for Pfy (formerly Promptify-It)</h1>
 

@@ -323,6 +323,6 @@ onMounted(async () => {
 }
 
 #root {
-  @apply rounded-sm !border dark:border-neutral-800;
+  @apply !border dark:border-neutral-800;
 }
 </style>

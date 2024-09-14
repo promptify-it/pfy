@@ -11,12 +11,10 @@ const props = defineProps<{
 </script>
 
 <template>
-  <AppLayout title="Create Command">
+  <AppLayout title="Update Command">
     <template #header>
-      <h2
-        class="text-xl font-semibold leading-tight text-neutral-800 dark:text-neutral-200"
-      >
-        Edit Command
+      <h2 class="text-xl leading-tight text-neutral-800 dark:text-neutral-200">
+        Update Command
       </h2>
     </template>
 

@@ -23,7 +23,7 @@ defineExpose({ focus: () => textarea.value?.focus() });
 <template>
   <textarea
     ref="textarea"
-    class="rounded-md border-neutral-300 shadow-sm focus:border-blue-500 focus:ring-blue-500 dark:border-neutral-700 dark:bg-neutral-950 dark:text-neutral-300 dark:focus:border-blue-600 dark:focus:ring-blue-600"
+    class="border-neutral-300 focus:border-blue-500 focus:ring-blue-500 dark:border-neutral-700 dark:bg-neutral-950 dark:text-neutral-300 dark:focus:border-blue-600 dark:focus:ring-blue-600"
     :value="modelValue"
     @input="
       $emit(

@@ -33,7 +33,7 @@ const close = () => {
     <div class="bg-white px-4 pb-4 pt-5 dark:bg-neutral-900 sm:p-6 sm:pb-4">
       <div class="sm:flex sm:items-start">
         <div
-          class="mx-auto flex h-12 w-12 shrink-0 items-center justify-center rounded-full bg-red-100 sm:mx-0 sm:h-10 sm:w-10"
+          class="justify-centerll mx-auto flex h-12 w-12 shrink-0 items-center bg-red-100 sm:mx-0 sm:h-10 sm:w-10"
         >
           <svg
             class="h-6 w-6 text-red-600 dark:text-red-400"
@@ -52,7 +52,9 @@ const close = () => {
         </div>
 
         <div class="mt-3 text-center sm:ms-4 sm:mt-0 sm:text-start">
-          <h3 class="text-lg font-medium text-neutral-900 dark:text-neutral-100">
+          <h3
+            class="text-lg font-medium text-neutral-900 dark:text-neutral-100"
+          >
             <slot name="title" />
           </h3>
 

@@ -6,9 +6,7 @@ import CreateCommandForm from '@/Pages/Commands/Partials/CreateCommandForm.vue';
 <template>
   <AppLayout title="Create Command">
     <template #header>
-      <h2
-        class="text-xl font-semibold leading-tight text-neutral-800 dark:text-neutral-200"
-      >
+      <h2 class="text-xl leading-tight text-neutral-800 dark:text-neutral-200">
         Create Command
       </h2>
     </template>

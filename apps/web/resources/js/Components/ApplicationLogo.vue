@@ -13,7 +13,6 @@
       y="16.9455"
       width="579.151"
       height="596.109"
-      rx="48"
       stroke="url(#paint0_linear_17_15)"
       stroke-width="32"
     />
@@ -22,7 +21,6 @@
       y="204.588"
       width="396.574"
       height="408.466"
-      rx="48"
       stroke="url(#paint1_linear_17_15)"
       stroke-width="32"
     />
@@ -31,7 +29,6 @@
       y="410.565"
       width="196.157"
       height="202.488"
-      rx="48"
       stroke="url(#paint2_linear_17_15)"
       stroke-width="32"
     />
