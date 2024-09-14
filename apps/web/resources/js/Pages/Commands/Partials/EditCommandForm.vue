@@ -3,7 +3,6 @@ import InputError from '@/Components/InputError.vue';
 import MonacoEditor from '@/Components/MonacoEditor.vue';
 import PrimaryButton from '@/Components/PrimaryButton.vue';
 import { useForm } from '@inertiajs/vue3';
-import { watch } from 'vue';
 
 const props = defineProps<{
   command: {
@@ -25,13 +24,6 @@ const createCommand = () => {
     },
   });
 };
-
-watch(
-  () => form.definition,
-  () => {
-    console.log(form.definition);
-  },
-);
 </script>
 
 <template>
@@ -50,7 +42,7 @@ watch(
       :class="{ 'opacity-25': form.processing }"
       :disabled="form.processing"
     >
-      Create
+      Update
     </PrimaryButton>
   </form>
 </template>

@@ -3,7 +3,6 @@ import InputError from '@/Components/InputError.vue';
 import MonacoEditor from '@/Components/MonacoEditor.vue';
 import PrimaryButton from '@/Components/PrimaryButton.vue';
 import { useForm } from '@inertiajs/vue3';
-import { watch } from 'vue';
 
 const form = useForm({
   definition: `{
@@ -39,13 +38,6 @@ const createCommand = () => {
     },
   });
 };
-
-watch(
-  () => form.definition,
-  () => {
-    console.log(form.definition);
-  },
-);
 </script>
 
 <template>
@@ -54,7 +46,7 @@ watch(
       <MonacoEditor
         id="root"
         v-model="form.definition"
-        class="h-[80vh] w-full"
+        class="h-[60vh] w-full"
       />
 
       <InputError :message="form.errors.definition" class="mt-2" />
