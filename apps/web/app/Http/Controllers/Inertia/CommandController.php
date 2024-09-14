@@ -131,4 +131,16 @@ class CommandController extends Controller
 
         return redirect()->to(route('command.index'));
     }
+
+    public function clone(Command $command)
+    {
+        $clonedCommand = $command->replicate();
+        $clonedCommand->signature = $command->signature . ':clone';
+        $clonedCommand->save();
+
+        $user = request()->user();
+        $user->currentTeam->commands()->attach($clonedCommand);
+
+        return redirect()->to(route('command.index'));
+    }
 }
