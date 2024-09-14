@@ -9,14 +9,14 @@ import { Link } from '@inertiajs/vue3';
     >
       <div class="flex justify-center space-x-6 md:order-2">
         <Link
-          :href="route('privacy-policy')"
+          :href="route('policy.show')"
           class="text-neutral-400 hover:text-neutral-500 dark:text-neutral-500 dark:hover:text-neutral-100"
         >
           Privacy Policy
         </Link>
 
         <Link
-          :href="route('terms-of-service')"
+          :href="route('terms.show')"
           class="text-neutral-400 hover:text-neutral-500 dark:text-neutral-500 dark:hover:text-neutral-100"
         >
           Terms of Service
